@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShoppingApp", "OnlineShoppingApp\OnlineShoppingApp.csproj", "{611F81A6-648E-4854-8AEE-728F1A6A29C0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CartAPI", "CartAPI\CartAPI.csproj", "{B186CCD6-62F0-4C73-B34C-1D1E2D53B82E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductAPI", "ProductAPI\ProductAPI.csproj", "{EC7929DE-4C08-4E8A-A149-CE87B762DB6A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderManagementAPI", "OrderManagementAPI\OrderManagementAPI.csproj", "{C5324478-61DF-44D1-8EE2-5B58BDCE2ED3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ServiceBusIntegration", "ServiceBusIntegration", "{B6551165-2D39-41D0-8A0B-D07F10266377}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBusIntegration.MessageBus", "ServiceBusIntegration.MessageBus\ServiceBusIntegration.MessageBus.csproj", "{75A38921-46FF-43D0-BDA2-A768309757F8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Pipelines", "Pipelines", "{EF34CBA6-0B01-4F36-96FA-0D249F1C1432}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DeploymentFiles", "DeploymentFiles", "{0C1F8302-E512-4A4A-AE6F-F43477CA117A}"
+	ProjectSection(SolutionItems) = preProject
+		ProductAPI-Deployment.yaml = ProductAPI-Deployment.yaml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GatewayOnlineShoppingWeb", "GatewayOnlineShoppingWeb\GatewayOnlineShoppingWeb.csproj", "{F54E17C2-D6C0-4B7B-B91E-D19B2470A279}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{611F81A6-648E-4854-8AEE-728F1A6A29C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{611F81A6-648E-4854-8AEE-728F1A6A29C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{611F81A6-648E-4854-8AEE-728F1A6A29C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{611F81A6-648E-4854-8AEE-728F1A6A29C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B186CCD6-62F0-4C73-B34C-1D1E2D53B82E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B186CCD6-62F0-4C73-B34C-1D1E2D53B82E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B186CCD6-62F0-4C73-B34C-1D1E2D53B82E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B186CCD6-62F0-4C73-B34C-1D1E2D53B82E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC7929DE-4C08-4E8A-A149-CE87B762DB6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC7929DE-4C08-4E8A-A149-CE87B762DB6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC7929DE-4C08-4E8A-A149-CE87B762DB6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC7929DE-4C08-4E8A-A149-CE87B762DB6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5324478-61DF-44D1-8EE2-5B58BDCE2ED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5324478-61DF-44D1-8EE2-5B58BDCE2ED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5324478-61DF-44D1-8EE2-5B58BDCE2ED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5324478-61DF-44D1-8EE2-5B58BDCE2ED3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75A38921-46FF-43D0-BDA2-A768309757F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75A38921-46FF-43D0-BDA2-A768309757F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75A38921-46FF-43D0-BDA2-A768309757F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75A38921-46FF-43D0-BDA2-A768309757F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F54E17C2-D6C0-4B7B-B91E-D19B2470A279}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F54E17C2-D6C0-4B7B-B91E-D19B2470A279}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F54E17C2-D6C0-4B7B-B91E-D19B2470A279}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F54E17C2-D6C0-4B7B-B91E-D19B2470A279}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{75A38921-46FF-43D0-BDA2-A768309757F8} = {B6551165-2D39-41D0-8A0B-D07F10266377}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87A3DFE4-4125-4DB4-995A-1AC155D6DACC}
+	EndGlobalSection
+EndGlobal

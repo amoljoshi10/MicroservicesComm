@@ -1,0 +1,42 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: shoppingapp-ingress
+  namespace: ingress-nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /40.88.48.191/products(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: productapi-svc
+            port:
+              number: 80
+      - path: /40.88.48.191/cart-api(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: cartapi-svc
+            port:
+              number: 80
+      - path: /40.88.48.191/ordermanagement-api(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: ordermanagmentapi-svc
+            port:
+              number: 80              
+      - path: /(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: productapi-svc
+            port:
+              number: 80

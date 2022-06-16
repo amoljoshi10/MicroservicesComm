@@ -1,0 +1,43 @@
+﻿@model IEnumerable<OnlineShoppingApp.Models.Cart>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Item Description
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @foreach (var order in item.Items)
+            {
+        <tr>
+            <td>
+                @order.Description
+            </td>
+            <td>
+                @order.Price
+            </td>
+            @*<td>
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
+            </td>*@
+            <td>
+                @Html.ActionLink("List", "List","Orders" )
+            </td>
+        </tr>
+            }
+        }
+        </tbody>
+</table>

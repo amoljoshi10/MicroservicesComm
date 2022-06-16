@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-ordermanagementapi
+  labels:
+    version: dev
+    product: ordermanagementapi
+spec:
+  selector:
+    app: ordermanagementapi
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  - port: 443
+    targetPort: 443
+    protocol: TCP
+    name: https
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-ordermanagementapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ordermanagementapi
+  template:
+    metadata:
+      labels:
+        app: ordermanagementapi
+    spec:
+      containers:
+      - name: ordermanagementapi
+        image: onlineshopping22acr.azurecr.io/ordermanagementapi:#{Build.BuildId}#
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        resources:
+          limits:
+            cpu: "0.10"
+      imagePullSecrets:
+        - name: acr-secret

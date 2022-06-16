@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-productapi
+  labels:
+    version: dev
+    product: productapi
+spec:
+  selector:
+    app: productapi
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  - port: 443
+    targetPort: 443
+    protocol: TCP
+    name: https
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-productapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: productapi
+  template:
+    metadata:
+      labels:
+        app: productapi
+    spec:
+      containers:
+      - name: productapi
+        image: onlineshopping22acr.azurecr.io/productapi:#{Build.BuildId}#
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        resources:
+          limits:
+            cpu: "0.10"
+      imagePullSecrets:
+        - name: acr-secret
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: public-svc
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: public-app

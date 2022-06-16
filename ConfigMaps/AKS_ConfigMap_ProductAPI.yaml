@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: productapi-configmap
+  namespace: default
+data:
+  AppConfiguration.json: |-
+    {
+        "Logging": {
+          "LogLevel": {
+            "Default": "Information",
+            "Microsoft": "Warning",
+            "Microsoft.Hosting.Lifetime": "Information"
+            }
+        },
+        "ApplicationInsights": {
+            "InstrumentationKey": "3411ef8f-de37-465a-9ad4-16a33abb3c33"
+        },
+        "ProductPrefix": "Health Care Product"
+
+    }

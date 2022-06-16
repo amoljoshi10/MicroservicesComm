@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gatewayonlineshoppingweb-svc
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+spec:
+  type: LoadBalancer
+  selector:
+    app: gatewayonlineshoppingweb-svc
+  ports:
+  - port: 80
+    name: http-port
+    targetPort: 80
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-gatewayonlineshoppingweb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gatewayonlineshoppingweb-svc
+  template:
+    metadata:
+      labels:
+        app: gatewayonlineshoppingweb-svc
+    spec:
+      containers:
+      - name: gatewayonlineshoppingweb
+        image: onlineshopping22acr.azurecr.io/gatewayonlineshoppingweb:#{Build.BuildId}#
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        resources:
+          limits:
+            cpu: "0.10"
+      imagePullSecrets:
+        - name: acr-secret

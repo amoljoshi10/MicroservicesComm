@@ -1,0 +1,55 @@
+﻿@model ShoppingCartViewModel
+
+@{
+    ViewData["Title"] = "Carts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>My CartItemLine</h1>
+
+<form asp-action="ProceedToBuy" asp-controller="Carts">
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>
+                    Item Code
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Price
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+
+    </table>
+    <div>
+        @Html.ActionLink("Add More Items", "List", "Products")
+    </div>
+    <span></span>
+    <span></span>
+    <div class="form-group">
+        <input type="submit" value="Proceed to Buy" class="btn btn-primary" />
+    </div>
+</form>
