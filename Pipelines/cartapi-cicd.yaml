@@ -16,7 +16,6 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'ACRRegistryConnection'
   imageRepository: 'cartapi'
   containerRegistry: 'onlineshopping22acr.azurecr.io'
   dockerfilePath: 'CartAPI/Dockerfile'
@@ -53,7 +52,6 @@ stages:
         command: buildAndPush
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
         buildContext: $(Build.SourcesDirectory)
         tags: |
           $(tag)
