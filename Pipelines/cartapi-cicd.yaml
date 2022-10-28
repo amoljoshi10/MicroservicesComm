@@ -65,18 +65,6 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
-    - task: replacetokens@3
-      inputs:
-        rootDirectory: '$(Build.SourcesDirectory)'
-        targetFiles: '$(deploymentFile)'
-        encoding: 'auto'
-        writeBOM: true
-        actionOnMissing: 'warn'
-        keepToken: false
-        tokenPrefix: '#{'
-        tokenSuffix: '}#'
-        useLegacyPattern: false
-        enableTelemetry: true
     - task: Kubernetes@1
       inputs:
         connectionType: 'Kubernetes Service Connection'
