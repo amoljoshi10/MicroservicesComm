@@ -64,17 +64,3 @@ stages:
     displayName: Deploy to k8s
     pool:
       vmImage: $(vmImageName)
-    steps:
-    - task: Kubernetes@1
-      inputs:
-        connectionType: 'Kubernetes Service Connection'
-        kubernetesServiceEndpoint: 'AKSServiceConnection'
-        namespace: 'default'
-        command: 'apply'
-        useConfigurationFile: true
-        configuration: '$(Build.SourcesDirectory)/$(deploymentFile)'
-        secretType: 'dockerRegistry'
-        containerRegistryType: 'Azure Container Registry'
-        azureSubscriptionEndpointForSecrets: 'azureamol(42f01daf-7fb8-4db8-8fce-9af5dde90556)'
-        azureContainerRegistry: 'onlineshopping22acr.azurecr.io'
-        secretName: 'pullkey'
