@@ -36,8 +36,10 @@ stages:
       inputs:
        serviceConnectionEndpoint: 'AZDevOpsSnykServiceConnection'
        testType: 'app'
+       targetFile: 'CartAPI/CartAPI.csproj'
        monitorWhen: 'always'
        failOnIssues: true
+
 
 - stage: Build
   displayName: Build and push stage
