@@ -64,7 +64,7 @@ stages:
         chmod +x snyk.exe
         ls -la
         snyk.exe -v
-    displayName: 'Snyk install'
+      displayName: 'Snyk install'
     - script: |
         curl -Lo ./snyk-to-html.exe "https://static.snyk.io/snyk-to-html/latest/snyk-to-html-win.exe"
         chmod +x snyk-to-html.exe
