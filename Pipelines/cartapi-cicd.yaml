@@ -38,7 +38,7 @@ stages:
        testType: 'app'
        targetFile: 'OnlineShoppingApp.sln'
        monitorWhen: 'always'
-       failOnIssues: true
+       failOnIssues: false
 
 
 - stage: Build
@@ -59,6 +59,21 @@ stages:
         tags: |
           $(tag)
 
+- stage: DcokerImageSecurityScan
+  displayName: Scan for security Vulnurabilities for Docker Images
+  jobs:  
+  - job: DcokerImageSecurityScan
+    displayName: DcokerImageSecurityScan
+    steps:
+    - task: SnykSecurityScan@1
+      inputs:
+       serviceConnectionEndpoint: 'AZDevOpsSnykServiceConnection'
+       testType: 'container'
+       dockerImageName: 'cartapi'
+       dockerfilePath: 'CartAPI/Dockerfile'
+       severityThreshold: 'medium'
+       monitorWhen: 'always'
+       failOnIssues: true
        
 - stage: Deploy
   displayName: Deploy to k8s
