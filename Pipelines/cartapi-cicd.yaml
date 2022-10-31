@@ -41,6 +41,7 @@ stages:
         targetFile: 'CartAPI/project.assets.json'
         monitorWhen: 'always'
         failOnIssues: true
+        additionalArguments: 'snyk test --json-file-output=result.json'
 
 
 - stage: Build
@@ -59,34 +60,15 @@ stages:
         buildContext: '$(Build.SourcesDirectory)'
         tags: '$(tag)'
 
-    - script: |
-        curl -Lo ./snyk.exe "https://static.snyk.io/cli/latest/snyk-win.exe"
-        chmod +x snyk.exe
-        ls -la
-        snyk.exe -v
-      displayName: 'Snyk install'
-    - script: |
-        curl -Lo ./snyk-to-html.exe "https://static.snyk.io/snyk-to-html/latest/snyk-to-html-win.exe"
-        chmod +x snyk-to-html.exe
-        ls -la
-      displayName: 'Snyk to html install'
-  # DO YOUR SCANNING HERE WITH SNYK
-  # create variable in Pipelines called 'SNYK_TOKEN' and securely save your Snyk token value
-  # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables
-    - script: |
-        snyk.exe auth $(SNYK_TOKEN)
-        snyk.exe test --json | snyk-to-html.exe -o results.html
-        ls -la
-        cd
-      displayName: 'Snyk test'
+    
 
   # CELEBRATE
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)'
-        Contents: 'results.html'
+        Contents: 'result.json'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 
-    - publish: $(System.DefaultWorkingDirectory)/results.html
-      artifact: Results.html
+    - publish: $(System.DefaultWorkingDirectory)/result.json
+      artifact: Result.json
