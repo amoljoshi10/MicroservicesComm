@@ -61,12 +61,6 @@ stages:
 
        
     - script: |
-        curl -Lo ./snyk.exe "https://static.snyk.io/cli/latest/snyk-win.exe"
-        chmod +x snyk.exe
-        ls -la
-        snyk.exe -v
-      displayName: 'Snyk install'
-    - script: |
         curl -Lo ./snyk-to-html.exe "https://static.snyk.io/snyk-to-html/latest/snyk-to-html-win.exe"
         chmod +x snyk-to-html.exe
         ls -la
