@@ -25,19 +25,6 @@ variables:
   vmImageName: 'ubuntu-latest'
 
 stages:
-- stage: SecurityScan
-  displayName: Scan for security Vulnurabilities
-  jobs:  
-  - job: SecurityScan
-    displayName: SecurityScan
-    steps:
-    - task: SnykSecurityScan@1
-      inputs:
-       serviceConnectionEndpoint: 'AZDevOpsSnykServiceConnection'
-       testType: 'app'
-       monitorWhen: 'always'
-       failOnIssues: true
-
 - stage: Build
   displayName: Build and push stage
   jobs:  
@@ -55,6 +42,20 @@ stages:
         buildContext: $(Build.SourcesDirectory)
         tags: |
           $(tag)
+
+- stage: SecurityScan
+  displayName: Scan for security Vulnurabilities
+  jobs:  
+  - job: SecurityScan
+    displayName: SecurityScan
+    steps:
+    - task: SnykSecurityScan@1
+      inputs:
+       serviceConnectionEndpoint: 'AZDevOpsSnykServiceConnection'
+       testType: 'container'
+       monitorWhen: 'always'
+       failOnIssues: true
+       
 - stage: Deploy
   displayName: Deploy to k8s
   jobs:  
