@@ -41,7 +41,7 @@ stages:
         targetFile: 'CartAPI/project.assets.json'
         monitorWhen: 'always'
         failOnIssues: true
-        additionalArguments: 'snyk test --json-file-output=result.json'
+        additionalArguments: '--json-file-output=result.json'
 
 
 - stage: Build
