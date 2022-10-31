@@ -34,13 +34,11 @@ stages:
     steps:
     - task: SnykSecurityScan@1
       inputs:
-       serviceConnectionEndpoint: 'AZDevOpsSnykServiceConnection'
-       testType: 'app'
-       targetFile: 'OnlineShoppingApp.sln'
-       monitorWhen: 'always'
-       failOnIssues: true
-       projectName: 'MicroservicesComm'
-       organization: 'amoljoshi10'
+        serviceConnectionEndpoint: 'AZDevOpsSnykServiceConnection'
+        testType: 'app'
+        targetFile: 'CartAPI/project.assets.json'
+        monitorWhen: 'always'
+        failOnIssues: true
 
 
 - stage: Build
