@@ -23,6 +23,8 @@ variables:
   deploymentFile: 'CartAPI-Deployment-yaml'
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
+  SNYK_TOKEN: 'f511b604-bdaf-49a2-ab7e-323480977739'
+  
 
 stages:
 
