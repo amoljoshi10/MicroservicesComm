@@ -69,8 +69,10 @@ stages:
         Contents: '**'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-
-    - publish: $(System.DefaultWorkingDirectory)/result.json
-      artifact: Result.json
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'MicroservicesBuildArtifacts'
+        publishLocation: 'Container'
 
          
