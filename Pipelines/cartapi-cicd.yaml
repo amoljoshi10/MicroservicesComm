@@ -66,9 +66,9 @@ stages:
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)'
-        Contents: 'result.json'
+        Contents: '*.json'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 
-    - publish: $(System.DefaultWorkingDirectory)/result.json
+    - publish: $(System.DefaultWorkingDirectory)/*.json
       artifact: Result.json
