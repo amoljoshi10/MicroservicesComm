@@ -41,7 +41,7 @@ stages:
         targetFile: 'CartAPI/project.assets.json'
         monitorWhen: 'always'
         failOnIssues: true
-        additionalArguments: '--json'
+        additionalArguments: '--json-file-output=result.json  --json'
 
 
 - stage: Build
@@ -66,9 +66,9 @@ stages:
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)'
-        Contents: '*.json'
+        Contents: 'result.json'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 
-    - publish: $(System.DefaultWorkingDirectory)/*.json
+    - publish: $(System.DefaultWorkingDirectory)/result.json
       artifact: Result.json
