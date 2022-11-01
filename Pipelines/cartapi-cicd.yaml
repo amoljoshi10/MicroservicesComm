@@ -45,7 +45,7 @@ stages:
 
 
 - stage: Build
-  displayName: Build and push stage
+  displayName: Build stage
   jobs:  
   - job: Build
     displayName: Build
@@ -53,7 +53,7 @@ stages:
       vmImage: $(vmImageName)
     steps:
     - task: Docker@2
-      displayName: Build and push an image to container registry
+      displayName: Build Stage
       inputs:
         command: 'build'
         Dockerfile: '**/Dockerfile'
