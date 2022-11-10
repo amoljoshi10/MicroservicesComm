@@ -44,6 +44,13 @@ stages:
         additionalArguments: '--json'
 
 
+  # CELEBRATE
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Agent.TempDirectory)'
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
 - stage: Build
   displayName: Build stage
   jobs:  
@@ -62,12 +69,6 @@ stages:
 
     
 
-  # CELEBRATE
-    - task: CopyFiles@2
-      inputs:
-        SourceFolder: '$(Agent.TempDirectory)'
-        Contents: '**'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 
     - task: PublishBuildArtifacts@1
