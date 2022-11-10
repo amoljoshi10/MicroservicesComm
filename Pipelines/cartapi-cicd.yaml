@@ -43,15 +43,6 @@ stages:
         failOnIssues: true
         additionalArguments: '--json'
 
-- stage: PrintVaraiables
-  displayName: PrintVaraiables Values
-  jobs:  
-  - job: PrintVar
-    displayName: PrintVar
-    steps:
-      - script: |
-          echo $((Build.SourcesDirectory)
-          echo $(Build.ArtifactStagingDirectory)
 
 - stage: Build
   displayName: Build stage
@@ -74,14 +65,14 @@ stages:
   # CELEBRATE
     - task: CopyFiles@2
       inputs:
-        Contents: '**\_temp\**'
+        SourceFolder: '$(Agent.TempDirectory)'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'MicroservicesBuildArtifacts'
+        ArtifactName: 'MicroservicesSnykArtifacts'
         publishLocation: 'Container'
 
          
