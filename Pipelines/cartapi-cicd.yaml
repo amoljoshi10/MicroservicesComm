@@ -74,7 +74,7 @@ stages:
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'MicroservicesSnykArtifacts'
+        ArtifactName: 'MicroservicesArtifacts'
         publishLocation: 'Container'
 
          
