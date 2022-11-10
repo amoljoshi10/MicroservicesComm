@@ -51,6 +51,12 @@ stages:
         Contents: '**'
         TargetFolder: '$(Common.TestResultsDirectory)'
 
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Common.TestResultsDirectory)'
+        ArtifactName: 'SnycArtifacts'
+        publishLocation: 'Container'
+
 - stage: Build
   displayName: Build stage
   jobs:  
@@ -80,10 +86,6 @@ stages:
         ArtifactName: 'MicroservicesArtifacts'
         publishLocation: 'Container'
         
-    - task: PublishBuildArtifacts@1
-      inputs:
-        PathtoPublish: '$(Common.TestResultsDirectory)'
-        ArtifactName: 'SnycArtifacts'
-        publishLocation: 'Container'
+ 
 
       
