@@ -66,6 +66,7 @@ stages:
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(Agent.TempDirectory)'
+        Contents: '**'
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 
