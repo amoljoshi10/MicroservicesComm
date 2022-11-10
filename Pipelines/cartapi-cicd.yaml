@@ -49,7 +49,7 @@ stages:
       inputs:
         SourceFolder: '$(Agent.TempDirectory)'
         Contents: '**'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+        TargetFolder: '$(Common.TestResultsDirectory)'
 
 - stage: Build
   displayName: Build stage
@@ -67,14 +67,18 @@ stages:
         buildContext: '$(Build.SourcesDirectory)'
         tags: '$(tag)'
 
-    
-
-
+      # CELEBRATE
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)'
+        Contents: '**'
+        TargetFolder: '$(Common.TestResultsDirectory)'
 
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'MicroservicesArtifacts'
         publishLocation: 'Container'
+        
 
          
