@@ -41,6 +41,8 @@ stages:
         targetFile: 'CartAPI/project.assets.json'
         monitorWhen: 'always'
         failOnIssues: true
+        projectName: 'MicroservicesComm'
+        organization: 'amoljoshi10'
         additionalArguments: '--json'
 
 
