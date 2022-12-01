@@ -43,7 +43,7 @@ stages:
         failOnIssues: true
         projectName: 'MicroservicesComm'
         organization: 'amoljoshi10'
-        additionalArguments: 'snyk test'
+        additionalArguments: '--json'
 
 
   # CELEBRATE
