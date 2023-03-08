@@ -10,7 +10,7 @@ spec:
   - port: 80
     name: http
     protocol: TCP
-    targetPort: 4000
+    targetPort: 4001
 
 ---
 apiVersion: apps/v1
@@ -27,7 +27,7 @@ spec:
         app: cartapi
     spec:
       containers:
-      - name: cartapiimage
+      - name: cartapi
         image: MicroservicesIngressACR.azurecr.io/cartapi:#{Build.BuildId}#
         ports:
           - containerPort: 80
