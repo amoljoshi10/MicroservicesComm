@@ -28,6 +28,6 @@ spec:
     spec:
       containers:
       - name: productapi
-        image: MicroservicesIngressACR.azurecr.io/productapi:#{Build.BuildId}#
+        image: MicroservicesIngressACR.azurecr.io/productapi:127
         ports:
           - containerPort: 80
