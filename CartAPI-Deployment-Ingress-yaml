@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cartapi-svc
+  name: cartapi
 spec:
   type: ClusterIP
   selector:
-    app: cartapi-svc
+    app: cartapi
   ports:
   - port: 80
     name: http-port
@@ -16,16 +16,16 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dep-cartapi
+  name: cartapi
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cartapi-svc
+      app: cartapi
   template:
     metadata:
       labels:
-        app: cartapi-svc
+        app: cartapi
     spec:
       containers:
       - name: cartapi
