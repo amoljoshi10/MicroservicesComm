@@ -10,7 +10,7 @@ spec:
   - port: 80
     name: http
     protocol: TCP
-    targetPort: 4001
+    targetPort: 4000
 
 ---
 apiVersion: apps/v1
