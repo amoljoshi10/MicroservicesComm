@@ -8,7 +8,7 @@ spec:
     app: cartapi
   ports:
   - port: 80
-    name: http-port
+    name: http
     protocol: TCP
     targetPort: 4000
 
@@ -27,7 +27,7 @@ spec:
         app: cartapi
     spec:
       containers:
-      - name: cartimage
+      - name: cartapiimage
         image: MicroservicesIngressACR.azurecr.io/cartapi:#{Build.BuildId}#
         ports:
           - containerPort: 80
