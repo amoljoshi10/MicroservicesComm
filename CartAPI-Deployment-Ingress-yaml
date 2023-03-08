@@ -18,7 +18,6 @@ kind: Deployment
 metadata:
   name: cartapi
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: cartapi
@@ -28,7 +27,7 @@ spec:
         app: cartapi
     spec:
       containers:
-      - name: cartapi
+      - name: cartimage
         image: MicroservicesIngressACR.azurecr.io/cartapi:#{Build.BuildId}#
         ports:
           - containerPort: 80
