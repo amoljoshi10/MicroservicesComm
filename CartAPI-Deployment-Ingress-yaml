@@ -28,6 +28,6 @@ spec:
     spec:
       containers:
       - name: cartapi
-        image: MicroservicesIngressACR.azurecr.io/cartapi:#{Build.BuildId}#
+        image: MicroservicesIngressACR.azurecr.io/cartapi:125
         ports:
           - containerPort: 80
