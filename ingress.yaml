@@ -1,0 +1,19 @@
+#ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: productapi
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: productapi.c319e6c69b524a658761.eastus.aksapp.io
+    http:
+      paths:
+      - path: / # Which path is this rule referring to
+        pathType: Prefix
+        backend: # How the ingress will handle the requests
+          service:
+            name: productapi # Which service the request will be forwarded to
+            port: 
+              name: http # Which port in that service
