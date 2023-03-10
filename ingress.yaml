@@ -2,12 +2,12 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: productapi
+  name: gatwayapiingress
   annotations:
     kubernetes.io/ingress.class: addon-http-application-routing
 spec:
   rules:
-  - host: productapi.c319e6c69b524a658761.eastus.aksapp.io
+  - host: gatwayapiingress.c319e6c69b524a658761.eastus.aksapp.io
     http:
       paths:
       - path: /products # Which path is this rule referring to
@@ -24,3 +24,11 @@ spec:
             name: cartapi # Which service the request will be forwarded to
             port: 
               name: http # Which port in that service
+       
+        - path: /gateway # Which path is this rule referring to
+          pathType: Prefix
+          backend: # How the ingress will handle the requests
+            service:
+              name: gatewayonlineshoppingweb # Which service the request will be forwarded to
+              port: 
+                name: http # Which port in that service
