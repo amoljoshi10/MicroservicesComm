@@ -24,11 +24,10 @@ spec:
             name: cartapi # Which service the request will be forwarded to
             port: 
               name: http # Which port in that service
-       
-        - path: /gateway # Which path is this rule referring to
-          pathType: Prefix
-          backend: # How the ingress will handle the requests
-            service:
-              name: gatewayonlineshoppingweb # Which service the request will be forwarded to
-              port: 
-                name: http # Which port in that service
+      - path: /gateway # Which path is this rule referring to
+        pathType: Prefix
+        backend: # How the ingress will handle the requests
+          service:
+            name: gatewayonlineshoppingweb # Which service the request will be forwarded to
+            port: 
+              name: http # Which port in that service
