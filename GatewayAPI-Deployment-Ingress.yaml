@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gatewayonlineshoppingweb
+spec:
+  type: ClusterIP
+  selector:
+    app: gatewayonlineshoppingweb
+  ports:
+  - port: 80
+    name: http
+    targetPort: 80
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gatewayonlineshoppingweb
+spec:
+  selector:
+    matchLabels:
+      app: gatewayonlineshoppingweb
+  template:
+    metadata:
+      labels:
+        app: gatewayonlineshoppingweb
+    spec:
+      containers:
+      - name: productapi
+        image: MicroservicesIngressACR.azurecr.io/gatewayonlineshoppingweb:129
+        ports:
+          - containerPort: 80
