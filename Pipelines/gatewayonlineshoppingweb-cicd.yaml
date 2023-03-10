@@ -18,7 +18,7 @@ variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'ACRRegistryConnection'
   imageRepository: 'gatewayonlineshoppingweb'
-  containerRegistry: 'onlineshopping22acr.azurecr.io'
+  containerRegistry: 'MicroservicesIngressACR.azurecr.io'
   dockerfilePath: 'GatewayOnlineShoppingWeb/Dockerfile'
   tag: '$(Build.BuildId)'
   deploymentFile: 'GatewayOnlineShoppingWeb-Deployment.yaml'
