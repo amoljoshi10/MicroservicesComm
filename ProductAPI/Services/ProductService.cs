@@ -31,7 +31,7 @@ namespace DemoAPI.Services
             }
             _products =new List<Product>();
             var productPrefix = _configuration.GetValue<string>("ProductPrefix");
-            _logger.LogInformation("ProductAPI ProductService GetProducts productPrefix {productPrefix} ", productPrefix);
+            //_logger.LogInformation("ProductAPI ProductService GetProducts productPrefix {productPrefix} ", productPrefix);
             for (int i = 1; i <= 20; i++)
             {
                 _products.Add(new Product { ProductID = i, ProductCategory = "Cateory" + i, ProductDescription = productPrefix + i, Price =   i *100  } );
