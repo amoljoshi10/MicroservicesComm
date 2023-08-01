@@ -48,7 +48,7 @@ namespace DemoAPI
 
             logger.LogInformation("ProductAPI  Configure method starts");
             var productPrefix = Configuration.GetValue<string>("ProductPrefix");
-            _logger.LogInformation("ProductAPI Startup productPrefix {productPrefix} ", productPrefix);
+            logger.LogInformation("ProductAPI Startup productPrefix {productPrefix} ", productPrefix);
             app.UseSwagger();
 
             app.UseSwaggerUI(c =>
