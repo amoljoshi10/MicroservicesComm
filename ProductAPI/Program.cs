@@ -19,15 +19,20 @@ namespace DemoAPI
             CreateWebHostBuilder(args).Build().Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration(c =>
+        public static IHostBuilder CreateWebHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    c.AddJsonFile(ConfigMapFileProvider.FromRelativePath("config"), 
-                        "AppConfiguration.json", 
-                        optional: true, 
-                        reloadOnChange: true);
-                })
-                .UseStartup<Startup>();
+                    webBuilder.UseStartup<Startup>();
+                });
+        //WebHost.CreateDefaultBuilder(args)
+        //    .ConfigureAppConfiguration(c =>
+        //    {
+        //        c.AddJsonFile(ConfigMapFileProvider.FromRelativePath("config"), 
+        //            "AppConfiguration.json", 
+        //            optional: true, 
+        //            reloadOnChange: true);
+        //    })
+        //    .UseStartup<Startup>();
     }
 }
